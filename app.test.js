@@ -1,7 +1,8 @@
 // app.test.js
-import { test } from 'node:test';
+import { test, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { users, checkVisited , country } from './app.js';
+import { db } from './app.js'
 
 test('users() returns an array of users', async () => {
   const result = await users();
@@ -21,4 +22,15 @@ test('country() returns an array of countries', async () => {
 test('checkVisited() returns an array of visited countries', async () => {
   const result = await checkVisited();
   assert.ok(Array.isArray(result), 'checkVisited() should return an array');
+});
+
+after(async () => {
+  // Close the database pool/connection if you have one
+  if (db) {
+    await db.end();
+  }
+
+  // Force exit only if you really need to
+  // (not recommended unless your CI/CD requires it)
+  process.exit(0);
 });

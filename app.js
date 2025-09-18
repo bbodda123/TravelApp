@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import pg  from "pg";
 import fs from 'fs';
 import csv from 'csv-parser';
-
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -17,7 +16,7 @@ fs.createReadStream('./countries.csv')
       )
   })
 
-const db = new pg.Client({
+export const db = new pg.Client({
   host: process.env.PGHOST,
   port: process.env.PGPORT,
   user: process.env.PGUSER,
