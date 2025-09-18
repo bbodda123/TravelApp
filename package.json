@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "init-db": "psql -h $PGHOST -U $PGUSER -d $PGDATABASE -f schema.sql",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "node --test",
     "start": "node app.js"
   },
   "jest": {

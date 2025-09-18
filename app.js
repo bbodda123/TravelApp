@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 fs.createReadStream('./countries.csv')
   .pipe(csv())
   .on('data', async row => {
-     await db.query(
+      await db.query(
         'INSERT INTO countries(country_code, country_name) VALUES ($1, $2)',
         [row.country_code, row.country_name]
       )
@@ -36,7 +36,7 @@ export async function users() {
   return result.rows 
 }
 
-async function countriesss() {
+export async function country() {
   const result = await db.query('SELECT * FROM countries');
   return result.rows 
 }
@@ -61,10 +61,9 @@ export async function checkVisited() {
 app.get("/", async (req, res) => {  
   const countries = await checkVisited();
   let user = await users();
-  let user2 = await countriesss();
   let color_spes = countries.pop();
   console.log(user);
-  console.log(user2);
+
 
   res.render("index.ejs", {
     countries: countries,
