@@ -28,7 +28,6 @@ services:
 
   app:
     build: .
-    container_name: traveltracker_app
     deploy:
       replicas: 3 
     depends_on:
