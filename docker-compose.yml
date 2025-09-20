@@ -28,8 +28,7 @@ services:
 
   app:
     build: .
-    deploy:
-      replicas: 3 
+    container_name: traveltracker_app
     depends_on:
       postgres:
         condition: service_healthy 
