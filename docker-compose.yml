@@ -45,7 +45,7 @@ services:
       - "443:443"
     volumes:
       #  Mount My Config File 
-      - ./conf/Caddyfile:/etc/caddy/Caddyfile
+      - ./conf/Caddyfile.j2:/etc/caddy/Caddyfile
     networks:
       - travel
 
