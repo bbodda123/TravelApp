@@ -38,6 +38,17 @@ services:
     networks:
       - travel
 
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      #  Mount My Config File 
+      - ./conf/Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - travel
+
 volumes:
   db_data_postgres:
 
