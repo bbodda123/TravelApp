@@ -63,10 +63,12 @@ app.get("/", async (req, res) => {
   let color_spes = countries.pop();
   console.log(user);
 
+  // Get only distinct values
+  totalCountries = [...new Set(countries)].length;
 
   res.render("index.ejs", {
     countries: countries,
-    total: countries.length,
+    total: totalCountries,
     users: user,
     color: color_spes,
   });
