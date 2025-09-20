@@ -64,7 +64,7 @@ app.get("/", async (req, res) => {
   console.log(user);
 
   // Get only distinct values
-  totalCountries = [...new Set(countries)].length;
+  let totalCountries = [...new Set(countries)].length;
 
   res.render("index.ejs", {
     countries: countries,
